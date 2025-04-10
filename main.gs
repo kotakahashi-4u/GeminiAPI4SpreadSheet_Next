@@ -10,7 +10,9 @@ function onEditTrigger(e) {
   if (range.getColumn() === 2 && range.getRow() === 1) {
     const sheet = e.source.getActiveSheet();
     try {
-      const url = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${GEMINI_API}`,
+      // モデルはサポート切れを起こすこともあるため、その時に応じて最適なものを設定すること
+      // モデル一覧：https://ai.google.dev/gemini-api/docs/models?hl=ja
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro-exp-03-25:generateContent?key=${GEMINI_API}`,
             payload = {
               'contents': [{
                 'parts': [{
